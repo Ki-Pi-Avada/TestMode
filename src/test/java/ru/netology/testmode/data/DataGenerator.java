@@ -19,13 +19,11 @@ public class DataGenerator {
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)
             .build();
-
     private static final Faker faker = new Faker(new Locale("en"));
 
     private DataGenerator() {
     }
 
-    // отправка запроса на создание пользователя
     private static void sendRequest(RegistrationDto user) {
         given()
                 .spec(requestSpec)
@@ -41,7 +39,7 @@ public class DataGenerator {
     }
 
     public static String getRandomPassword() {
-        return faker.internet().password();
+        return faker.internet().password(8, 16);
     }
 
     public static class Registration {
@@ -54,7 +52,7 @@ public class DataGenerator {
 
         public static RegistrationDto getRegisteredUser(String status) {
             RegistrationDto registeredUser = getUser(status);
-            sendRequest(registeredUser); // регистрируем пользователя через API
+            sendRequest(registeredUser);
             return registeredUser;
         }
     }
