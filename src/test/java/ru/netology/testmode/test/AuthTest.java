@@ -16,14 +16,6 @@ import static ru.netology.testmode.data.DataGenerator.getRandomPassword;
 
 class AuthTest {
 
-    @BeforeAll
-    static void setupAll() {
-        Configuration.headless = true;
-        Configuration.browser = "chrome";
-        Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 15000;
-    }
-
     @BeforeEach
     void setup() {
         open("http://localhost:9999");

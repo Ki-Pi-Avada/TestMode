@@ -28,9 +28,3 @@ jobs:
         run: |
           ./gradlew test --info \
             -Dselenide.headless=true \
-            -Dchromeoptions.args="--disable-dev-shm-usage,--no-sandbox,--remote-allow-origins=*,--headless" \
-            -Dchromeoptions.prefs="intl.accept_languages=ru"
-        timeout-minutes: 10
-
-      - name: Stop application
-        run: pkill -f "java -jar artifacts/app-ibank.jar"
